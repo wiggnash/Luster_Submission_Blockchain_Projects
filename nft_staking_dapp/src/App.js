@@ -33,7 +33,7 @@ function App() {
         </nav>
         <div className='container container-style'>
           <div className='col'>
-            <body className='nftminter'>
+            <div className='nftminter'>
               <form>
                   <div className="row pt-3">
                   <div>
@@ -46,7 +46,7 @@ function App() {
                     fontWeight: "400",
                     textShadow: "1px 1px 1px black",
                   }}>
-                    <label for="floatingInput">Please Connect Wallet</label>
+                    <label htmlFor="floatingInput">Please Connect Wallet</label>
                   </div>
                 </div>
                 <div>
@@ -87,7 +87,121 @@ function App() {
                   </div>
                 </div>
               </form>
-            </body>
+            </div>
+          </div>
+          <div className='col'>
+            <div className='nftstaker border-0'>
+              <form style={{ fontFamily: "SF Pro Display" }}>
+                <h2 style={{ borderRadius: '14px', fontWeight: "300", fontSize: "25px" }}>N2DR NFT Staking Vault </h2>
+                <h6 style={{ fontWeight: "300" }}>First time staking?</h6>
+                <Button className="btn" style={{ backgroundColor: "#ffffff10", boxShadow: "1px 1px 5px #000000" }} >Authorize Your Wallet</Button>
+                <div className='row px-3'>
+                  <div className='col'>
+                    <form class="stakingrewards" style={{ borderRadius: "25px", boxShadow: "1px 1px 15px #ffffff" }}>
+                      <h5 style={{ color: "#FFFFFF", fontWeight: '300' }}>Your Vault Activity</h5>
+                      <h6 style={{ color: "#FFFFFF" }}>Verify Staked Amount</h6>
+                      <Button style={{ backgroundColor: "#ffffff10", boxShadow: "1px 1px 5px #000000" }} >Verify</Button>
+                      <table className='table mt-3 mb-5 px-3 table-dark'>
+                        <tr>
+                          <td style={{ fontSize: "19px" }}>Your Staked NFTs:
+                            <span style={{ backgroundColor: "#ffffff00", fontSize: "21px", color: "#39FF14", fontWeight: "500", textShadow: "1px 1px 2px #000000" }} id='yournfts'></span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style={{ fontSize: "19px" }}>Total Staked NFTs:
+                            <span style={{ backgroundColor: "#ffffff00", fontSize: "21px", color: "#39FF14", fontWeight: "500", textShadow: "1px 1px 2px #000000" }} id='stakedbalance'></span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style={{ fontSize: "19px" }}>Unstake All Staked NFTs
+                            <Button className='mb-3' style={{ backgroundColor: "#ffffff10", boxShadow: "1px 1px 5px #000000" }}>Unstake All</Button>
+                          </td>
+                        </tr>
+                      </table>
+                    </form>
+                    <img className="col-lg-4" src="art.png"/>
+                    <div className="col">
+                      <form className='stakingrewards' style={{ borderRadius: "25px", boxShadow: "1px 1px 15px #ffffff", fontFamily: "SF Pro Display" }}>
+                        <h5 style={{ color: "#FFFFFF", fontWeight: '300' }}> Staking Rewards</h5>
+                        <Button style={{ backgroundColor: "#ffffff10", boxShadow: "1px 1px 5px #000000" }} >Earned N2D Rewards</Button>
+                        <div id='earned' style={{ color: "#39FF14", marginTop: "5px", fontSize: '25px', fontWeight: '500', textShadow: "1px 1px 2px #000000" }}><p style={{ fontSize: "20px" }}>Earned Tokens</p></div>
+                        <div className='col-12 mt-2'>
+                          <div style={{ color: 'white' }}>Claim Rewards</div>
+                          <Button style={{ backgroundColor: "#ffffff10", boxShadow: "1px 1px 5px #000000" }} className="mb-2">Claim</Button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div className="row px-4 pt-2">
+                    <div className='header'>
+                      <div style={{ fontSize: '25px', borderRadius: '14px', color: "#ffffff", fontWeight: "300" }}>N2DR NFT Staking Pool Active Rewards</div>
+                        <table className='table px-3 table-bordered table-dark'>
+                            <thead className='thead-light'>
+                            <tr>
+                              <th scope="col">Collection</th>
+                              <th scope="col">Rewards Per Day</th>
+                              <th scope="col">Exchangeable Items</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                <td>N2D Bronze Collection</td>
+                                <td class="amount" data-test-id="rewards-summary-ads">
+                                  <span class="amount">0.50</span>&nbsp;<span class="currency">N2DR</span>
+                                </td>
+                                <td class="exchange">
+                                  <span class="amount">2</span>&nbsp;<span class="currency">NFTs/M</span>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>N2D Silver Collection</td>
+                                <td class="amount" data-test-id="rewards-summary-ac">
+                                  <span class="amount">2.50</span>&nbsp;<span class="currency">N2DR</span>
+                                </td>
+                                <td class="exchange"><span class="amount">10</span>&nbsp;<span class="currency">NFTs/M</span>
+                                </td>
+                              </tr>
+                              <tr className='stakegoldeffect'>
+                                <td>N2D Gold Collection</td>
+                                <td class="amount" data-test-id="rewards-summary-one-time"><span class="amount">1</span>&nbsp;<span class="currency">N2DR+</span>
+                                </td>
+                                <td class="exchange">
+                                  <span class="amount">25 NFTs/M or </span>
+                                  <span class="currency">100 N2DR/M</span>
+                                </td>
+                              </tr>
+                          </tbody>
+                        </table>
+                        <div>
+                          <div style={{ fontSize: '25px', borderRadius: '14px', fontWeight: '300' }}>N2DR Token Stake Farms</div>
+                            <table className='table table-bordered table-dark' style={{ borderRadius: '14px' }}>
+                                  <thead className='thead-light'>
+                                    <tr>
+                                      <th scope="col">Farm Pools</th>
+                                      <th scope="col">Harvest Daily Earnings</th>
+                                    </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>Stake N2DR to Earn N2DR</td>
+                                  <td class="amount" data-test-id="rewards-summary-ads">
+                                    <span class="amount">0.01</span>&nbsp;<span class="currency">Per N2DR</span>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>Stake N2DR to Earn N2DR+</td>
+                                  <td class="amount" data-test-id="rewards-summary-ac">
+                                    <span class="amount">0.005</span>&nbsp;<span class="currency">Per N2DR</span>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
     </div>
