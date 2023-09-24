@@ -3,8 +3,59 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
 import 'sf-font';
+import axios from 'axios';
 
-function App() {
+const NFTCONTRACT = "0xC6Ad2824B03275D4cC5E8f4f61c5a143b999717b";
+const STAKINGCONTRACT = "0x09aE75315fE2E63271B4F218C4b00F4fF143052A"
+const polygonscanapikey = "DBQX5JUSAVUZRK8CC4IN2UZF9N2HA63P4U";
+const polygonscanapi = "https://api-testnet.polygonscan.com/api"
+const moralisapi = "https://deep-index.moralis.io/api/v2/";
+const moralisapikey = "2VBV4vaCLiuGu6Vu7epXKlFItGe3jSPON8WV4CrXKYaNBEazEUrf1xwHxbrIo1oM";
+const nftpng = "https://ipfs.io/ipfs/QmavM8Zpo9bD3r4zEnhbbBLLvHyfr1YL7f1faG3ovaeSSG/";
+
+class App extends Component {
+	constructor() {
+		super();
+		this.state = {
+			balance: [],
+			nftdata: [],
+			rawearn: [],
+		};
+	}
+
+	handleModal(){  
+		this.setState({show:!this.state.show})  
+	} 
+
+	handleNFT(nftamount) {
+		this.setState({outvalue:nftamount.target.value});
+  	}
+
+	async componentDidMount() {
+		
+		await axios.get((polygonscanapi + `?module=stats&action=tokensupply&contractaddress=${NFTCONTRACT}&apikey=${polygonscanapikey}`))
+		.then(outputa => {
+            this.setState({
+                balance:outputa.data
+            })
+            console.log(outputa.data)
+        })
+		let config = {'X-API-Key': moralisapikey, 'accept': 'application/json'};
+		await axios.get((moralisapi + `/nft/${NFTCONTRACT}/owners?chain=mumbai&format=decimal`), {headers: config})
+		.then(outputb => {
+			const { result } = outputb.data
+            this.setState({
+                nftdata:result
+            })
+            console.log(outputb.data)
+        })
+	}
+  
+  render() {
+	const {balance} = this.state;
+	const {nftdata} = this.state;
+	const {outvalue} = this.state;
+
   return (
     <div className="App nftapp">
          <nav className="navbar navbarfont navbar-expand-md navbar-dark bg-dark mb-4">
