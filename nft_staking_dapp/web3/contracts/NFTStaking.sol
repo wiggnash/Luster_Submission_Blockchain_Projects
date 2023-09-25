@@ -58,7 +58,6 @@ contract NFTStakingPerToken is Context, IERC721Receiver {
 
     /*
      * withdraws a token from the staking contract
- 
      */
 
     function withdraw(uint256 tokenId) external update(_msgSender()) {
